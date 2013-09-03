@@ -15,7 +15,7 @@ The MainActivity class included in this repository contains code to achieve the 
 private void authenticateWithPassport() {
     //This is only safe when you have the Passport
     //app installed on the device already.
-    if(ADNPassportUtility.isPassportAuthenticationAvailable(this)) {
+    if(ADNPassportUtility.isPassportAuthorizationAvailable(this)) {
         //convenience method for getting a net.app.adnpassport.authorize Intent
         Intent i = ADNPassportUtility.getAuthorizationIntent(CLIENT_ID, SCOPE);
         showProgress("Authorizing with App.net Passport");
