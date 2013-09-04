@@ -7,6 +7,34 @@ Another important function of the SDK is that it allows you to seamlessly offer 
 
 We call this an SDK, but in reality, this is just a demonstration of how to use an Intent to authorize from the Passport app. If you're familiar with how Android works, this should be pretty straightforward. The main functionality is contained in static methods in the class ADNPassportUtility.
 
+## Registration
+
+In order to use the App.net Login SDK for Android, **you must register your application's package name and keyhash with App.net.**
+
+First, generate the keyhash:
+
+### Development
+
+To generate a hash of your debug signing key, run the following command:
+
+    keytool -exportcert -alias androiddebugkey -keystore <path to debug.keystore> | openssl sha1 -binary | openssl base64
+
+You may be prompted for a password -- it should be `android`.
+
+### Production
+
+For your production app, the alias, keystore path, and password may vary. Find the appropriate values and run this command:
+
+    keytool -exportcert -alias <RELEASE_KEY_ALIAS> -keystore <RELEASE_KEY_PATH> | openssl sha1 -binary | openssl base64
+
+Once you have generated the appropriate keyhashes, you must add them to the [App.net management interface for your application](https://account.app.net/developer/apps/).
+
+![First dialog](https://files.app.net/hcgn7gAB.png)
+
+![Second dialog](https://files.app.net/hcgkOMUJ.png)
+
+![Third dialog](https://files.app.net/hcg30VQG.png)
+
 ## Usage
 
 The MainActivity class included in this repository contains code to achieve the tasks outlined above. The following method can be hooked up to a button in your app to kick off the authorization flow. If the Passport app is not present on the device and the `net.app.adnpassport.authorize` Intent cannot be handled, then this method brings the user to market to install the Passport. 
