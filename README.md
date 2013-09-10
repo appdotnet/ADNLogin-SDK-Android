@@ -19,13 +19,15 @@ To generate a hash of your debug signing key, run the following command:
 
     keytool -exportcert -alias androiddebugkey -keystore <path to debug.keystore> | openssl sha1 -binary | openssl base64
 
-You may be prompted for a password -- it should be `android`.
+You may be prompted for a password -- it should be `android`. Make sure you entire the entire command -- it should end with `base64`. (You may have to scroll to the right if you're viewing the docs on Github.)
 
 ### Production
 
 For your production app, the alias, keystore path, and password may vary. Find the appropriate values and run this command:
 
     keytool -exportcert -alias <RELEASE_KEY_ALIAS> -keystore <RELEASE_KEY_PATH> | openssl sha1 -binary | openssl base64
+
+Make sure you enter the entire command -- it should end with `base64`. (You may have to scroll to the right if you're viewing the docs on Github.)
 
 Once you have generated the appropriate keyhashes, you must add them to the [App.net management interface for your application](https://account.app.net/developer/apps/).
 
